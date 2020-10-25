@@ -1,0 +1,45 @@
+<body>
+<p>Rock Paper Scissors</p>
+</body>
+<script>
+/*##########Global Variables##########*/
+let playerScore = 0
+let computerScore = 0
+let computerChoice = ""
+let playerChoice = ""
+let rounds = 0
+/*##########Functions##########*/
+//Function for computerChoice
+function computerPlay() {
+    computerArray = ["rock", "paper", "scissors"]
+    //picks random string from array
+    computerChoice = computerArray[Math.floor(Math.random() * 3)]
+}
+function round() {
+    computerPlay()
+    //asks for player input
+    playerChoice = prompt("Rock, Paper, Scissors")
+    //conditionals for round
+    if (computerChoice === playerChoice) {
+        ++rounds
+        return("Round: " + rounds + " " + "You:" + playerChoice + " - " + playerScore + " Com:" + computerChoice + " - " + computerScore + " It's a tie.")
+    }
+    else if (playerChoice.toLowerCase() === "rock" && computerChoice === "scissors" || 
+        playerChoice.toLowerCase() === "scissors" && computerChoice === "paper" ||
+        playerChoice.toLowerCase() === "paper" && computerChoice === "rock") {
+            ++rounds
+            ++playerScore
+            return("Round: " + rounds + " " + "You:" + playerChoice + " - " + playerScore + " Com:" + computerChoice + " - " + computerScore + " You Win.")
+        }
+    else if (playerChoice.toLowerCase() === "paper" && computerChoice === "scissors" || 
+        playerChoice.toLowerCase() === "rock" && computerChoice === "paper" ||
+        playerChoice.toLowerCase() === "scissors" && computerChoice === "rock") {
+            ++rounds
+            ++computerScore
+            return("Round: " + rounds + " " + "You:" + playerChoice + " - " + playerScore + " Com:" + computerChoice + " - " + computerScore + " You Lose.")
+        }
+    else {
+        return("loser")
+    }
+}
+</script>
