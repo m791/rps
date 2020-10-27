@@ -20,26 +20,47 @@ function round() {
     //asks for player input
     playerChoice = prompt("Rock, Paper, Scissors")
     //conditionals for round
-    if (computerChoice === playerChoice) {
+    if (playerChoice === null) {
+        game()
+    }
+    else if (computerChoice === playerChoice) {
         ++rounds
-        return("Round: " + rounds + " " + "You:" + playerChoice + " - " + playerScore + " Com:" + computerChoice + " - " + computerScore + " It's a tie.")
+        console.log("Round: " + rounds + " " + "You:" + playerChoice + " - " + playerScore + " Com:" + computerChoice + " - " + computerScore + " It's a tie.")
+        game()
     }
     else if (playerChoice.toLowerCase() === "rock" && computerChoice === "scissors" || 
         playerChoice.toLowerCase() === "scissors" && computerChoice === "paper" ||
         playerChoice.toLowerCase() === "paper" && computerChoice === "rock") {
             ++rounds
             ++playerScore
-            return("Round: " + rounds + " " + "You:" + playerChoice + " - " + playerScore + " Com:" + computerChoice + " - " + computerScore + " You Win.")
+            console.log("Round: " + rounds + " " + "You:" + playerChoice + " - " + playerScore + " Com:" + computerChoice + " - " + computerScore + " You Win.")
+            game()
         }
     else if (playerChoice.toLowerCase() === "paper" && computerChoice === "scissors" || 
         playerChoice.toLowerCase() === "rock" && computerChoice === "paper" ||
         playerChoice.toLowerCase() === "scissors" && computerChoice === "rock") {
             ++rounds
             ++computerScore
-            return("Round: " + rounds + " " + "You:" + playerChoice + " - " + playerScore + " Com:" + computerChoice + " - " + computerScore + " You Lose.")
+            console.log("Round: " + rounds + " " + "You:" + playerChoice + " - " + playerScore + " Com:" + computerChoice + " - " + computerScore + " You Lose.")
+            game()
         }
     else {
-        return("loser")
+        game()
+        console.log("Enter Rock Paper Scissors")
+    }
+}
+function game() {
+    if (rounds === 5 && computerScore === playerScore) {
+        console.log ("Game over - Player:" + " " + playerScore + " " + "Com:" + " " + computerScore + " it's a tie.")
+    }
+    else if (rounds === 5 && computerScore > playerScore) {
+        console.log ("Game over - Player:" + " " + playerScore + " " + "Com:" + " " + computerScore + " you lose.")
+    }
+    else if (rounds === 5 && computerScore < playerScore) {
+        console.log ("Game over - Player:" + " " + playerScore + " " + "Com:" + " " + computerScore + " you win.")
+    }
+    else {
+        round()
     }
 }
 </script>
